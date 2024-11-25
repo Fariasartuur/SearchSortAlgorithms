@@ -7,7 +7,9 @@ public class Main {
 		
 		
 		System.out.print("================================================");
-		AlgorithmsManager.bSearch();
+		AlgorithmsManager.bSearchInt();
+		System.out.print("================================================");
+		AlgorithmsManager.bSearchString();
 		System.out.print("================================================");
 		AlgorithmsManager.iSearch();
 		System.out.print("================================================");
@@ -31,7 +33,9 @@ public class Main {
 		System.out.print("================================================");
 		AlgorithmsManager.rSort();
 		System.out.print("================================================");
-		AlgorithmsManager.qSort();
+		AlgorithmsManager.qSortInt();
+		System.out.print("================================================");
+		AlgorithmsManager.qSortString();
 		
 	}
 	

@@ -38,7 +38,7 @@ public class Algorithms {
 	  }
 	
 	// Binary Search
-	static int binarySearch(int[] arr, int first, int last, int num) {
+	static int binarySearchInt(int[] arr, int first, int last, int num) {
 		if(arr.length == 0) return -1;
 		
 		int count = 0;
@@ -57,6 +57,32 @@ public class Algorithms {
 		    }
 
 		    if(arr[mid] > num){
+		        last = mid - 1;
+		    }
+		}
+		
+		return -1;
+	}
+	
+	static int binarySearchString(String[] arr, int first, int last, String word) {
+		if(arr.length == 0) return -1;
+		
+		int count = 0;
+		
+		while(first <= last) {
+			count++;
+			int mid = first + (last - first) / 2;
+			
+			if(arr[mid].equals(word)) {
+				System.out.println("Word found in "+ count +" attempts");
+				return mid;
+			}
+			
+			if(arr[mid].compareTo(word) < 0){
+		        first = mid + 1;
+		    }
+
+		    if(arr[mid].compareTo(word) > 0){
 		        last = mid - 1;
 		    }
 		}
@@ -109,7 +135,7 @@ public class Algorithms {
 			i = i * 2;
 		}
 			
-		int result = binarySearch(arr, i / 2, Math.min(i, n), num); // Arrays.binarySearch(arr, i / 2, Math.min(i, n), num);
+		int result = binarySearchInt(arr, i / 2, Math.min(i, n), num); // Arrays.binarySearch(arr, i / 2, Math.min(i, n), num);
 
 	    if (result >= 0) {
 	        System.out.println("Number found in " + count + " attempts");
@@ -450,20 +476,19 @@ public class Algorithms {
 	}
 	
 	// Quick Sort
-	
-	static int[] quickSort(int[]arr, int first, int last, String pivotChoice) {
+	static int[] quickSortInt(int[]arr, int first, int last, String pivotChoice) {
 		
 		if(first < last) {
-			int pivot = partition(arr, first, last, pivotChoice);
+			int pivot = partitionInt(arr, first, last, pivotChoice);
 			
-			quickSort(arr, first, pivot - 1, pivotChoice);
-			quickSort(arr, pivot + 1, last, pivotChoice);
+			quickSortInt(arr, first, pivot - 1, pivotChoice);
+			quickSortInt(arr, pivot + 1, last, pivotChoice);
 		}
 		
 		return arr;
 	}
 	
-	private static int partition(int[] arr, int first, int last, String pivotChoice) {
+	private static int partitionInt(int[] arr, int first, int last, String pivotChoice) {
 		int pivot;
 		
 		switch(pivotChoice) {
@@ -473,7 +498,7 @@ public class Algorithms {
 		case "middle":
 			int middle = first + (last - first) / 2;
             pivot = arr[middle];
-            swap(arr, middle, last);
+            swapInt(arr, middle, last);
             break;
 		case "last":
 			pivot = arr[last];
@@ -489,15 +514,74 @@ public class Algorithms {
 	    	comparisonCount++;
 	        if (arr[j] < pivot) {
 	            i++;
-	            swap(arr, i, j);
+	            swapInt(arr, i, j);
 	        }
 	        j++;
 	    }
 		
-	    swap(arr, i + 1, last);
+	    swapInt(arr, i + 1, last);
 	    return i + 1;
 	}
 	
+	private static void swapInt(int[]arr, int a, int b) {
+		int temp = arr[a];
+		arr[a] = arr[b];
+        arr[b] = temp;
+	}
+	
+	static String[] quickSortString(String[] arr, int first, int last, String pivotChoice){
+		if(first < last) {
+			int pivot = partitionString(arr, first, last, pivotChoice);
+			
+			quickSortString(arr, first, pivot - 1, pivotChoice);
+			quickSortString(arr, pivot + 1, last, pivotChoice);
+		}
+		
+		return arr;
+	}
+	
+	private static int partitionString(String[] arr, int first, int last, String pivotChoice) {
+		String pivot;
+		
+		switch(pivotChoice) {
+		case "first":
+			pivot = arr[first];
+            break;
+		case "middle":
+			int middle = first + (last - first) / 2;
+            pivot = arr[middle];
+            swapString(arr, middle, last);
+            break;
+		case "last":
+			pivot = arr[last];
+            break;
+		default:
+            throw new IllegalArgumentException("Invalid Pivot Criterion");	
+		}
+		
+		int i = first - 1;
+	    int j = first;
+		
+	    while (j < last) {
+	    	comparisonCount++;
+	        if (arr[j].compareTo(pivot) < 0) {
+	            i++;
+	            swapString(arr, i, j);
+	        }
+	        j++;
+	    }
+		
+	    swapString(arr, i + 1, last);
+	    return i + 1;
+		
+	}
+
+	private static void swapString(String[] arr, int a, int b) {
+		String temp = arr[a];
+		arr[a] = arr[b];
+        arr[b] = temp;
+	}
+
 	private static int findMax(int[] arr) {
         int max = arr[0];
         for (int num : arr) {
@@ -507,13 +591,6 @@ public class Algorithms {
         }
         return max;
     }
-	
-	
-	private static void swap(int[]arr, int a, int b) {
-		int temp = arr[a];
-		arr[a] = arr[b];
-        arr[b] = temp;
-	}
 	
 	public static void resetComparisonCount() {
 	    comparisonCount = 0;

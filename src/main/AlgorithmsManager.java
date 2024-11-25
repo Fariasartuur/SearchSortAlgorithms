@@ -15,7 +15,7 @@ public class AlgorithmsManager {
 		switch(alg) {
 		case "binary":
 			startTime = System.nanoTime();
-		    result = Algorithms.binarySearch(array, 0, array.length - 1, num);
+		    result = Algorithms.binarySearchInt(array, 0, array.length - 1, num);
 		    endTime = System.nanoTime();
 			break;
 		case "interpolation":
@@ -139,25 +139,25 @@ public class AlgorithmsManager {
 			// First Pivot
 			Algorithms.resetComparisonCount();
 			startTime = System.nanoTime();
-			arr = Algorithms.quickSort(arr, 0, arr.length - 1, "first");
+			arr = Algorithms.quickSortInt(arr, 0, arr.length - 1, "first");
 			endTime = System.nanoTime();
-			System.out.println("\n\nAlmost Ordered Execution Time (First Pivot): " + formatTime(endTime - startTime) + " seconds");
+			System.out.println("\n\nExecution Time (First Pivot): " + formatTime(endTime - startTime) + " seconds");
 			System.out.println("Comparison Number: " + Algorithms.getComparisonCount() + "\n");
 			
 			// Middle Pivot
 			Algorithms.resetComparisonCount();
 			startTime = System.nanoTime();
-			arr = Algorithms.quickSort(arr, 0, arr.length - 1, "middle");
+			arr = Algorithms.quickSortInt(arr, 0, arr.length - 1, "middle");
 			endTime = System.nanoTime();
-			System.out.println("Almost Ordered Execution Time (Middle Pivot): " + formatTime(endTime - startTime) + " seconds");
+			System.out.println("Execution Time (Middle Pivot): " + formatTime(endTime - startTime) + " seconds");
 			System.out.println("Comparison Number: " + Algorithms.getComparisonCount() + "\n");
 			
 			// Last Pivot
 			Algorithms.resetComparisonCount();
 			startTime = System.nanoTime();
-			arr = Algorithms.quickSort(arr, 0, arr.length - 1, "last");
+			arr = Algorithms.quickSortInt(arr, 0, arr.length - 1, "last");
 			endTime = System.nanoTime();
-			System.out.println("Almost Ordered Execution Time (Last Pivot): " + formatTime(endTime - startTime) + " seconds");
+			System.out.println("Execution Time (Last Pivot): " + formatTime(endTime - startTime) + " seconds");
 			System.out.println("Comparison Number: " + Algorithms.getComparisonCount() + "\n");
 			
 			allow = false;
@@ -183,8 +183,82 @@ public class AlgorithmsManager {
 		Algorithms.resetComparisonCount();
 	}
 	
-	static void bSearch() {
-		System.out.println("\nBinary Search\n");
+	static void runString(String[] arr, String alg) {
+		long startTime = 0;
+		long endTime = 0;
+		boolean allow = true;
+		
+		if(arr == null) {
+			System.out.println("Array is NULL");
+			return;
+		}
+		
+		System.out.println("Array before Sort");
+		if(arr != null) {
+			for(int i = 0; i < arr.length; i++) {
+				if(i != arr.length - 1) {
+					System.out.print(arr[i] + " - ");
+				} else {
+					System.out.print(arr[i]);
+				}
+			}
+		}
+		
+		switch(alg) {
+		case "quickString":		
+			Algorithms.resetComparisonCount();
+			startTime = System.nanoTime();
+			arr = Algorithms.quickSortString(arr, 0, arr.length - 1, "first");
+			endTime = System.nanoTime();
+			System.out.println("\n\nExecution Time (First Pivot): " + formatTime(endTime - startTime) + " seconds");
+			System.out.println("Comparison Number: " + Algorithms.getComparisonCount() + "\n");
+			
+			Algorithms.resetComparisonCount();
+			startTime = System.nanoTime();
+			arr = Algorithms.quickSortString(arr, 0, arr.length - 1, "middle");
+			endTime = System.nanoTime();
+			System.out.println("Execution Time (Middle Pivot): " + formatTime(endTime - startTime) + " seconds");
+			System.out.println("Comparison Number: " + Algorithms.getComparisonCount() + "\n");
+			
+			Algorithms.resetComparisonCount();
+			startTime = System.nanoTime();
+			arr = Algorithms.quickSortString(arr, 0, arr.length - 1, "last");
+			endTime = System.nanoTime();
+			System.out.println("Execution Time (Last Pivot): " + formatTime(endTime - startTime) + " seconds");
+			System.out.println("Comparison Number: " + Algorithms.getComparisonCount() + "\n");
+			
+			allow = false;
+			break;
+		case "mergeString":
+			startTime = System.nanoTime();
+			arr = Algorithms.mergeSortString(arr);
+			endTime = System.nanoTime();
+			break;
+		default:
+            throw new IllegalArgumentException("Invalid Algorithm");	
+		}
+		
+		if (allow) {
+			System.out.println("\n\nExecution Time: " + formatTime(endTime - startTime) + " seconds\n");
+		}
+		
+		System.out.println("Array after Sort");
+		if(arr != null) {
+			for(int i = 0; i < arr.length; i++) {
+				if(i != arr.length - 1) {
+					System.out.print(arr[i] + " - ");
+				} else {
+					System.out.print(arr[i]);
+				}
+			}
+		}
+		
+		allow = true;
+		Algorithms.resetComparisonCount();
+	}
+	
+	static void bSearchInt() {
+		System.out.println("\nBinary Search (Int)\n");
 		int[] arrayS = {2, 5, 6, 8, 9, 10, 13, 15, 16, 20};
 		int[] arrayM = {2, 5, 6, 8, 9, 10, 13, 15, 16, 20, 23, 25, 28, 32, 35, 39, 50, 52};
 		int[] arrayB = {2, 5, 6, 8, 9, 10, 13, 15, 16, 20, 23, 25, 28, 32, 35, 39, 50, 52, 58, 60, 62, 65, 70, 72, 80, 85, 90, 95, 100, 110, 120, 130, 140};
@@ -202,6 +276,23 @@ public class AlgorithmsManager {
 	    System.out.println("\nBig List");
 	    runSearch(arrayB, numB, "binary");
 	  
+	}
+	
+	static void bSearchString() {
+		System.out.println("\nBinary Search (String)\n");
+		String[] array = {"apple", "banana", "grape", "kiwi", "lemon", "mango", "orange", "pear", "pineapple", "watermelon"};
+		String word = "orangedd";
+		
+		Long startTime = System.nanoTime();
+	    int result = Algorithms.binarySearchString(array, 0, array.length - 1, word);
+	    Long endTime = System.nanoTime();
+	    
+	    System.out.println("Execution Time: " + formatTime(endTime - startTime) + " seconds");
+		if(result != -1){
+		      System.out.println("Word "+ word +" found at the index "+ result);
+		} else {
+		      System.out.println("Couldn't find the word "+ word +" at the array");
+		}
 	}
 	
 	static void iSearch() {
@@ -309,34 +400,10 @@ public class AlgorithmsManager {
 	
 	static void mSortString() {
 		System.out.println("\nMerge Sort String\n");
-		String[] names = {"Maria", "João", "Ana", "Carlos", "Beatriz", "Pedro"};
-		 
-		System.out.println("Array before Sort");
-		if(names != null) {
-			for(int i = 0; i < names.length; i++) {
-				if(i != names.length - 1) {
-					System.out.print(names[i] + " - ");
-				} else {
-					System.out.print(names[i]);
-				}
-			}
-		}
+		String[] names = {"Maria", "João", "Ana", "Carlos", "Beatriz", "Pedro"}; 
 		
-		long startTime = System.nanoTime();
-		names = Algorithms.mergeSortString(names);
-		long endTime = System.nanoTime();
-		System.out.println("\n\nExecution Time: " + formatTime(endTime - startTime) + " seconds\n");
+		runString(names, "mergeString");	
 		
-		System.out.println("Array after Sort");
-		if(names != null) {
-			for(int i = 0; i < names.length; i++) {
-				if(i != names.length - 1) {
-					System.out.print(names[i] + " - ");
-				} else {
-					System.out.print(names[i]);
-				}
-			}
-		}
 		System.out.println();
 	}
 	
@@ -416,7 +483,7 @@ public class AlgorithmsManager {
 		System.out.println();
 	}
 	
-	static void qSort() {
+	static void qSortInt() {
 		System.out.println("\nQuick Sort\n");
 		int[] almostOrderedArray = {8, 11, 12, 14, 21, 23, 34, 36, 38, 42, 50, 55, 56, 65, 67, 76, 78, 87, 89, 90, 99};
 		int[] disorderedArray = {45, 23, 78, 56, 12, 67, 89, 34, 90, 21, 50, 36, 42, 87, 14, 8, 65, 38, 76, 11, 55, 99};
@@ -429,6 +496,17 @@ public class AlgorithmsManager {
 		System.out.println("Disordered Array\n");
 		runSort(disorderedArray, "quick");
 		
+		System.out.println();
+		
+	}
+	
+	static void qSortString() {
+		System.out.println("\nQuick Sort String\n");
+		String[] names = {"Maria", "João", "Ana", "Carlos", "Beatriz", "Pedro"};
+		
+		runString(names, "quickString");
+		
+		System.out.println();		
 	}
 	
 	private static String formatTime(long nanoseconds) {
