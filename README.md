@@ -216,4 +216,42 @@ This repository contains a series of implementations of search and sorting algor
  </tr>
 </table>
 
+# Sort Algorithms Stability
 
+### 1. Shell Sort
+- Stability: Not Stable
+- Why? During the process of comparing elements over larger gaps, equal elements may be shifted, altering their relative order.
+- Example:
+  - Original: [(3, A), (3, B), (2, C)]
+  - Shell Sort: [(2, C), (3, B), (3, A)]
+   
+### 2. Merge Sort
+- Stability: Stable
+- Why? While merging sorted subarrays, equal elements are copied in the order they appear in the subarray.
+- Example:
+  - Original: [(3, A), (2, B), (3, C)]
+  - Merge Sort: [(2, B), (3, A), (3, C)]
+### 3. Selection Sort
+- Stability: Unstable
+- Why? During the process of swapping the smallest element with the current element, the relative order of equal elements may change.
+- Example:
+  - Original: [(3, A), (3, B), (2, C)]
+  - Selection Sort: [(2, C), (3, B), (3, A)]
+### 4. Bucket Sort
+- Stability: Stable (if the sorting within each bucket is stable)
+- Why? Equal elements fall into the same bucket, and their relative order is preserved if the sorting method used inside the buckets is stable (e.g., Merge Sort).
+- Example:
+  - Original: [(3, A), (3, B), (2, C)]
+  - Bucket Sort: [(2, C), (3, A), (3, B)]
+### 5. Radix Sort
+- Stability: Stable
+- Why? It sorts digits from the least significant to the most significant, using a stable sorting algorithm (often Counting Sort) at each step.
+- Example:
+  - Original: [(32, A), (32, B), (21, C)]
+  - Radix Sort: [(21, C), (32, A), (32, B)]
+### 6. Quick Sort
+- Stability: Unstable
+- Why? During partitioning, equal elements may be placed on different sides of the pivot, altering their relative order.
+- Example:
+  - Original: [(3, A), (3, B), (2, C)]
+  - Quick Sort: [(2, C), (3, B), (3, A)]
