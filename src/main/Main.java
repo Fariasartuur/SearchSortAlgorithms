@@ -5,6 +5,7 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
+		Library library = new Library();
 		
 		System.out.print("================================================");
 		AlgorithmsManager.bSearchInt();
@@ -36,6 +37,9 @@ public class Main {
 		AlgorithmsManager.qSortInt();
 		System.out.print("================================================");
 		AlgorithmsManager.qSortString();
+		System.out.println("================================================");
+		library.searchBook("978-1503280786");
+		System.out.println("================================================");
 		
 	}
 	
