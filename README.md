@@ -2,14 +2,14 @@
 
 This repository contains a series of implementations of search and sorting algorithms that are part of a study for the Data Structures course. Below are the descriptions of the implemented algorithms, performance comparisons, and usage examples.
 
-## Search Algorithms
+# Search Algorithms
 - Binary Search
 - Interpolation Search
 - Jump Search
 - Exponential Search
 - Ternary Search
 
-## Sort Algorithms
+# Sort Algorithms
 
 - Shell Sort
   - Shell
@@ -255,3 +255,17 @@ This repository contains a series of implementations of search and sorting algor
 - Example:
   - Original: [(3, A), (3, B), (2, C)]
   - Quick Sort: [(2, C), (3, B), (3, A)]
+
+# Graphics
+
+Here is a column chart representing the sorting algorithms:
+
+### Merge Sort
+<img src="assets/MergeSort.png" alt="Column Graphic" width="500" />
+
+### Quick Sort
+<img src="assets/QuickSort.png" alt="Column Graphic" width="500" />
+
+### Selection Sort
+<img src="assets/SelectionSort.png" alt="Column Graphic" width="500" />
+
