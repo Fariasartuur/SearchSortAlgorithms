@@ -281,7 +281,7 @@ public class AlgorithmsManager {
 	static void bSearchString() {
 		System.out.println("\nBinary Search (String)\n");
 		String[] array = {"apple", "banana", "grape", "kiwi", "lemon", "mango", "orange", "pear", "pineapple", "watermelon"};
-		String word = "orangedd";
+		String word = "orange";
 		
 		Long startTime = System.nanoTime();
 	    int result = Algorithms.binarySearchString(array, 0, array.length - 1, word);
