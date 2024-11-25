@@ -366,7 +366,7 @@ public class Algorithms {
 	}
 	
 	// Bucket Sort Float
-	static float[] bucketSortFloat(float[] arr, int n) {
+	static float[] bucketSortFloat(float[] arr, int n, float min, float max) {
 		if(n == 0) return null;
 		
 		@SuppressWarnings("unchecked")
@@ -377,7 +377,8 @@ public class Algorithms {
 		}
 		
 		for(float num : arr) {
-			int bucket_idx = (int) (num * n);
+			int bucket_idx = (int) ((num - min) / (max - min) * n);
+			if (bucket_idx >= n) bucket_idx = n - 1;
 			buckets[bucket_idx].add(num);
 		}
 		

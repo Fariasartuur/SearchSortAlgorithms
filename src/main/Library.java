@@ -7,13 +7,13 @@ import java.util.List;
 
 public class Library {
 	
-	static List<Book> books = new ArrayList<>();
+	private static List<Book> books = new ArrayList<>();
 	
 	public Library() {
 		runBooks();
 	}
 	
-	private void runBooks() {
+	public void runBooks() {
 		books.add(new Book("978-0061120084", "To Kill a Mockingbird", "Harper Lee"));
         books.add(new Book("978-0451524935", "1984", "George Orwell"));
         books.add(new Book("978-0743273565", "The Great Gatsby", "F. Scott Fitzgerald"));
@@ -26,6 +26,12 @@ public class Library {
         books.add(new Book("978-0486454115", "Crime and Punishment", "Fyodor Dostoevsky"));
         
         Collections.sort(books, Comparator.comparing(Book::getIsbn));
+	}
+	
+	public void printBooks() {
+		for(Book b : books) {
+			System.out.println("ISBN: " + b.getIsbn() + " - Title: " + b.getTitle() + " - Author: " + b.getAuthor());
+		}
 	}
 	
 	public void searchBook(String isbn) {

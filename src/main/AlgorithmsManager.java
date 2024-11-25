@@ -448,7 +448,7 @@ public class AlgorithmsManager {
 		}
 		
 		long startTime = System.nanoTime();
-		array = Algorithms.bucketSortFloat(array, array.length);
+		array = Algorithms.bucketSortFloat(array, array.length, 0, 1);
 		long endTime = System.nanoTime();
 		System.out.println("\n\nExecution Time: " + formatTime(endTime - startTime) + " seconds\n");
 		
