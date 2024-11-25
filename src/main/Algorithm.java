@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class Algorithms {
+public class Algorithm {
 	
 	private static int comparisonCount = 0;
 

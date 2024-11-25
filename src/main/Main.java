@@ -5,8 +5,15 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
+		run();
+
+		
+	}
+	
+	static void run() {
 //		new Library().runBooks();
-		new Classroom().runClassroom();
+//		library.printBooks();
+//		new Classroom().runClassroom();
 		
 //		System.out.print("================================================");
 //		AlgorithmsManager.bSearchInt();
@@ -41,10 +48,6 @@ public class Main {
 //		System.out.println("================================================");
 //		library.searchBook("978-1503280786");
 //		System.out.println("================================================");
-//		library.printBooks();
-		
 	}
-	
-	
 
 }

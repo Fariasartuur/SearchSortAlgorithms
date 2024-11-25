@@ -15,27 +15,27 @@ public class AlgorithmsManager {
 		switch(alg) {
 		case "binary":
 			startTime = System.nanoTime();
-		    result = Algorithms.binarySearchInt(array, 0, array.length - 1, num);
+		    result = Algorithm.binarySearchInt(array, 0, array.length - 1, num);
 		    endTime = System.nanoTime();
 			break;
 		case "interpolation":
 			startTime = System.nanoTime();
-		    result = Algorithms.interpolationSearch(array, 0, array.length - 1, num);
+		    result = Algorithm.interpolationSearch(array, 0, array.length - 1, num);
 		    endTime = System.nanoTime();
 			break;
 		case "jump":
 			startTime = System.nanoTime();
-		    result = Algorithms.jumpSearch(array, 0, array.length, num);
+		    result = Algorithm.jumpSearch(array, 0, array.length, num);
 		    endTime = System.nanoTime();
 			break;
 		case "exponential":
 			startTime = System.nanoTime();
-		    result = Algorithms.exponentialSearch(array, array.length, num);
+		    result = Algorithm.exponentialSearch(array, array.length, num);
 		    endTime = System.nanoTime();
 			break;
 		case "ternary":
 			startTime = System.nanoTime();
-		    result = Algorithms.ternarySearch(array, 0, array.length - 1, num);
+		    result = Algorithm.ternarySearch(array, 0, array.length - 1, num);
 		    endTime = System.nanoTime();
 			break;
 		default:
@@ -69,96 +69,96 @@ public class AlgorithmsManager {
 		switch(alg) {
 		case "shell":
 			// Shell
-			Algorithms.resetComparisonCount();
+			Algorithm.resetComparisonCount();
 			startTime = System.nanoTime();
-			arr = Algorithms.shellSortShell(arr, arr.length);
+			arr = Algorithm.shellSortShell(arr, arr.length);
 			endTime = System.nanoTime();
 			System.out.println("\n\nShell Sort Execution Time: " + formatTime(endTime - startTime) + " seconds");
-			System.out.println("Comparison Number: " + Algorithms.getComparisonCount() + "\n");
+			System.out.println("Comparison Number: " + Algorithm.getComparisonCount() + "\n");
 			
 			// Knuth
-			Algorithms.resetComparisonCount();
+			Algorithm.resetComparisonCount();
 			startTime = System.nanoTime();
-			arr = Algorithms.shellSortKnuth(arr, arr.length);
+			arr = Algorithm.shellSortKnuth(arr, arr.length);
 			endTime = System.nanoTime();
 			System.out.println("\nKnuth Shell Sort Execution Time: " + formatTime(endTime - startTime) + " seconds");
-			System.out.println("Comparison Number: " + Algorithms.getComparisonCount() + "\n");
+			System.out.println("Comparison Number: " + Algorithm.getComparisonCount() + "\n");
 			
 			// Hibbard
-			Algorithms.resetComparisonCount();
+			Algorithm.resetComparisonCount();
 			startTime = System.nanoTime();
-			arr = Algorithms.shellSortHibbard(arr, arr.length);
+			arr = Algorithm.shellSortHibbard(arr, arr.length);
 			endTime = System.nanoTime();
 			System.out.println("\nHibbard Shell Sort Execution Time: " + formatTime(endTime - startTime) + " seconds");
-			System.out.println("Comparison Number: " + Algorithms.getComparisonCount() + "\n");
+			System.out.println("Comparison Number: " + Algorithm.getComparisonCount() + "\n");
 			
 			allow = false;
 			break;
 		case "merge":
-			Algorithms.resetComparisonCount();
+			Algorithm.resetComparisonCount();
 			startTime = System.nanoTime();
-			arr = Algorithms.mergeSortInt(arr);
+			arr = Algorithm.mergeSortInt(arr);
 			endTime = System.nanoTime();
-			System.out.println("\n\nComparison Number: " + Algorithms.getComparisonCount());
+			System.out.println("\n\nComparison Number: " + Algorithm.getComparisonCount());
 
 			break;
 		case "selection":
-			Algorithms.resetComparisonCount();
+			Algorithm.resetComparisonCount();
 			startTime = System.nanoTime();
-			arr = Algorithms.selectionSort(arr, arr.length);
+			arr = Algorithm.selectionSort(arr, arr.length);
 			endTime = System.nanoTime();
-			System.out.println("\n\nComparison Number: " + Algorithms.getComparisonCount());
+			System.out.println("\n\nComparison Number: " + Algorithm.getComparisonCount());
 
 			break;
 		case "bucket":
-			Algorithms.resetComparisonCount();
+			Algorithm.resetComparisonCount();
 			startTime = System.nanoTime();
-			arr = Algorithms.bucketSortInt(arr, arr.length);
+			arr = Algorithm.bucketSortInt(arr, arr.length);
 			endTime = System.nanoTime();
-			System.out.println("\n\nComparison Number: " + Algorithms.getComparisonCount());
+			System.out.println("\n\nComparison Number: " + Algorithm.getComparisonCount());
 
 			break;
 		case "radix":
-			Algorithms.resetComparisonCount();
+			Algorithm.resetComparisonCount();
 			startTime = System.nanoTime();
-			arr = Algorithms.radixSort(arr, 10);
+			arr = Algorithm.radixSort(arr, 10);
 			endTime = System.nanoTime();
 			System.out.println("\n\nBase 10 Execution Time: " + formatTime(endTime - startTime) + " seconds");
-			System.out.println("Comparison Number: " + Algorithms.getComparisonCount() + "\n");
+			System.out.println("Comparison Number: " + Algorithm.getComparisonCount() + "\n");
 			
-			Algorithms.resetComparisonCount();
+			Algorithm.resetComparisonCount();
 			startTime = System.nanoTime();
-			arr = Algorithms.radixSort(arr, 2);
+			arr = Algorithm.radixSort(arr, 2);
 			endTime = System.nanoTime();
 			System.out.println("Base 2 Execution Time: " + formatTime(endTime - startTime) + " seconds");
-			System.out.println("Comparison Number: " + Algorithms.getComparisonCount() + "\n");
+			System.out.println("Comparison Number: " + Algorithm.getComparisonCount() + "\n");
 			
 			allow = false;
 			break;
 		case "quick":
 			// First Pivot
-			Algorithms.resetComparisonCount();
+			Algorithm.resetComparisonCount();
 			startTime = System.nanoTime();
-			arr = Algorithms.quickSortInt(arr, 0, arr.length - 1, "first");
+			arr = Algorithm.quickSortInt(arr, 0, arr.length - 1, "first");
 			endTime = System.nanoTime();
 			System.out.println("\n\nExecution Time (First Pivot): " + formatTime(endTime - startTime) + " seconds");
-			System.out.println("Comparison Number: " + Algorithms.getComparisonCount() + "\n");
+			System.out.println("Comparison Number: " + Algorithm.getComparisonCount() + "\n");
 			
 			// Middle Pivot
-			Algorithms.resetComparisonCount();
+			Algorithm.resetComparisonCount();
 			startTime = System.nanoTime();
-			arr = Algorithms.quickSortInt(arr, 0, arr.length - 1, "middle");
+			arr = Algorithm.quickSortInt(arr, 0, arr.length - 1, "middle");
 			endTime = System.nanoTime();
 			System.out.println("Execution Time (Middle Pivot): " + formatTime(endTime - startTime) + " seconds");
-			System.out.println("Comparison Number: " + Algorithms.getComparisonCount() + "\n");
+			System.out.println("Comparison Number: " + Algorithm.getComparisonCount() + "\n");
 			
 			// Last Pivot
-			Algorithms.resetComparisonCount();
+			Algorithm.resetComparisonCount();
 			startTime = System.nanoTime();
-			arr = Algorithms.quickSortInt(arr, 0, arr.length - 1, "last");
+			arr = Algorithm.quickSortInt(arr, 0, arr.length - 1, "last");
 			endTime = System.nanoTime();
 			System.out.println("Execution Time (Last Pivot): " + formatTime(endTime - startTime) + " seconds");
-			System.out.println("Comparison Number: " + Algorithms.getComparisonCount() + "\n");
+			System.out.println("Comparison Number: " + Algorithm.getComparisonCount() + "\n");
 			
 			allow = false;
 			break;
@@ -180,7 +180,7 @@ public class AlgorithmsManager {
 		}
 		
 		allow = true;
-		Algorithms.resetComparisonCount();
+		Algorithm.resetComparisonCount();
 	}
 	
 	static void runString(String[] arr, String alg) {
@@ -206,32 +206,32 @@ public class AlgorithmsManager {
 		
 		switch(alg) {
 		case "quickString":		
-			Algorithms.resetComparisonCount();
+			Algorithm.resetComparisonCount();
 			startTime = System.nanoTime();
-			arr = Algorithms.quickSortString(arr, 0, arr.length - 1, "first");
+			arr = Algorithm.quickSortString(arr, 0, arr.length - 1, "first");
 			endTime = System.nanoTime();
 			System.out.println("\n\nExecution Time (First Pivot): " + formatTime(endTime - startTime) + " seconds");
-			System.out.println("Comparison Number: " + Algorithms.getComparisonCount() + "\n");
+			System.out.println("Comparison Number: " + Algorithm.getComparisonCount() + "\n");
 			
-			Algorithms.resetComparisonCount();
+			Algorithm.resetComparisonCount();
 			startTime = System.nanoTime();
-			arr = Algorithms.quickSortString(arr, 0, arr.length - 1, "middle");
+			arr = Algorithm.quickSortString(arr, 0, arr.length - 1, "middle");
 			endTime = System.nanoTime();
 			System.out.println("Execution Time (Middle Pivot): " + formatTime(endTime - startTime) + " seconds");
-			System.out.println("Comparison Number: " + Algorithms.getComparisonCount() + "\n");
+			System.out.println("Comparison Number: " + Algorithm.getComparisonCount() + "\n");
 			
-			Algorithms.resetComparisonCount();
+			Algorithm.resetComparisonCount();
 			startTime = System.nanoTime();
-			arr = Algorithms.quickSortString(arr, 0, arr.length - 1, "last");
+			arr = Algorithm.quickSortString(arr, 0, arr.length - 1, "last");
 			endTime = System.nanoTime();
 			System.out.println("Execution Time (Last Pivot): " + formatTime(endTime - startTime) + " seconds");
-			System.out.println("Comparison Number: " + Algorithms.getComparisonCount() + "\n");
+			System.out.println("Comparison Number: " + Algorithm.getComparisonCount() + "\n");
 			
 			allow = false;
 			break;
 		case "mergeString":
 			startTime = System.nanoTime();
-			arr = Algorithms.mergeSortString(arr);
+			arr = Algorithm.mergeSortString(arr);
 			endTime = System.nanoTime();
 			break;
 		default:
@@ -254,7 +254,7 @@ public class AlgorithmsManager {
 		}
 		
 		allow = true;
-		Algorithms.resetComparisonCount();
+		Algorithm.resetComparisonCount();
 	}
 	
 	static void bSearchInt() {
@@ -284,7 +284,7 @@ public class AlgorithmsManager {
 		String word = "orange";
 		
 		Long startTime = System.nanoTime();
-	    int result = Algorithms.binarySearchString(array, 0, array.length - 1, word);
+	    int result = Algorithm.binarySearchString(array, 0, array.length - 1, word);
 	    Long endTime = System.nanoTime();
 	    
 	    System.out.println("Execution Time: " + formatTime(endTime - startTime) + " seconds");
@@ -448,7 +448,7 @@ public class AlgorithmsManager {
 		}
 		
 		long startTime = System.nanoTime();
-		array = Algorithms.bucketSortFloat(array, array.length, 0, 1);
+		array = Algorithm.bucketSortFloat(array, array.length, 0, 1);
 		long endTime = System.nanoTime();
 		System.out.println("\n\nExecution Time: " + formatTime(endTime - startTime) + " seconds\n");
 		
