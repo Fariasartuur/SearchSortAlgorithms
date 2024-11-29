@@ -13,7 +13,7 @@ public class Library {
 		runBooks();
 	}
 	
-	public void runBooks() {
+	private void runBooks() {
 		books.add(new Book("978-0061120084", "To Kill a Mockingbird", "Harper Lee"));
         books.add(new Book("978-0451524935", "1984", "George Orwell"));
         books.add(new Book("978-0743273565", "The Great Gatsby", "F. Scott Fitzgerald"));
@@ -36,36 +36,25 @@ public class Library {
 	
 	public void searchBook(String isbn) {
 		
-		Book findBook = binarySearch(isbn);
-		
-		if (findBook != null) {
-            System.out.println("Livro encontrado: " + findBook);
-        } else {
-            System.out.println("Livro com ISBN " + isbn + " não encontrado.");
-        }
-		
-	}
-	
-	private static Book binarySearch(String isbn) {
-		int first = 0;
-		int last = books.size() - 1;
-		
-		while(first <= last) {
-			int mid = first + (last - first) / 2;
-			Book midBook = books.get(mid);
-			
-			int comparison = isbn.compareTo(midBook.getIsbn());
-            if (comparison == 0) {
-                return midBook;
-            } else if (comparison < 0) {
-            	last = mid - 1;
-            } else {
-            	first = mid + 1;
-            }
-			
+		List<String> isbns = new ArrayList<>();
+		for(Book book : books) {
+			isbns.add(book.getIsbn());
 		}
 		
-		return null;
+		Collections.sort(isbns);
+		
+		String findIsbn = Algorithm.binarySearchList(isbns, 0, isbns.size() - 1, isbn);
+		
+		if (findIsbn != null) {
+            for(Book book : books) {
+            	if(book.getIsbn().equals(findIsbn)) {
+            		System.out.println("Livro encontrado: " + book);
+                    return;
+            	}
+            }
+        }
+		
+		System.out.println("Livro com ISBN " + isbn + " não encontrado.");
 	}
 	
 	class Book {

@@ -1,6 +1,15 @@
 package main;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class AlgorithmsManager {
+	
+	static List<String> arrayString = new ArrayList<>();
+	
+	public AlgorithmsManager() {
+		runWords();
+	}
 	
 	static void runSearch(int[] array, int num, String alg) {
 		long startTime = 0;
@@ -278,18 +287,30 @@ public class AlgorithmsManager {
 	  
 	}
 	
-	static void bSearchString() {
+	static void runWords() {
+		arrayString.add("apple");
+		arrayString.add("banana");
+		arrayString.add("grape");
+		arrayString.add("kiwi");
+		arrayString.add("lemon");
+		arrayString.add("mango");
+		arrayString.add("orange");
+		arrayString.add("pear");
+		arrayString.add("pineapple");
+		arrayString.add("watermelon");
+	}
+	
+	static void bSearchList() {
 		System.out.println("\nBinary Search (String)\n");
-		String[] array = {"apple", "banana", "grape", "kiwi", "lemon", "mango", "orange", "pear", "pineapple", "watermelon"};
 		String word = "orange";
 		
 		Long startTime = System.nanoTime();
-	    int result = Algorithm.binarySearchString(array, 0, array.length - 1, word);
+	    String result = Algorithm.binarySearchList(arrayString, 0, arrayString.size() - 1, word);
 	    Long endTime = System.nanoTime();
 	    
 	    System.out.println("Execution Time: " + formatTime(endTime - startTime) + " seconds");
-		if(result != -1){
-		      System.out.println("Word "+ word +" found at the index "+ result);
+		if(result != null){
+		      System.out.println("Word Found: "+ word);
 		} else {
 		      System.out.println("Couldn't find the word "+ word +" at the array");
 		}

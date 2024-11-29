@@ -37,6 +37,32 @@ public class Algorithm {
 	    return -1;
 	  }
 	
+	static float interpolationSearchList(List<Float> arr, int first, int last, float num) {
+		if(arr.isEmpty() || arr == null) return -1;
+		
+		int count = 0;
+		
+	    while(first <= last && num >= arr.get(first) && num <= arr.get(last)) {
+	    	count++;
+	    	int pos = first + (int) (((num - arr.get(first)) * (last - first)) / (arr.get(last) - arr.get(first)));
+
+	    	if(arr.get(pos).equals(num)) {
+	    		System.out.println("Student found in "+ count +" attempts");
+	    		return pos;
+	    	}
+	    	
+	    	if(arr.get(pos) < num) {
+	    		first = pos + 1;
+	    	}
+	    	
+	    	if(arr.get(pos) > num) {
+	    		last = pos - 1;
+	    	}
+	    }
+	    
+	    return -1;
+	}
+	
 	// Binary Search
 	static int binarySearchInt(int[] arr, int first, int last, int num) {
 		if(arr.length == 0) return -1;
@@ -64,31 +90,26 @@ public class Algorithm {
 		return -1;
 	}
 	
-	static int binarySearchString(String[] arr, int first, int last, String word) {
-		if(arr.length == 0) return -1;
-		
-		int count = 0;
+	static String binarySearchList(List<String> arr, int first, int last, String word) {
+		if(arr.isEmpty() || arr == null) return null;
 		
 		while(first <= last) {
-			count++;
 			int mid = first + (last - first) / 2;
+			String midList = arr.get(mid);
 			
-			if(arr[mid].equals(word)) {
-				System.out.println("Word found in "+ count +" attempts");
-				return mid;
-			}
-			
-			if(arr[mid].compareTo(word) < 0){
-		        first = mid + 1;
-		    }
-
-		    if(arr[mid].compareTo(word) > 0){
-		        last = mid - 1;
-		    }
+			int comparison = word.compareTo(midList);
+			if (comparison == 0) {
+	            return midList;
+	        } else if (comparison < 0) {
+	            last = mid - 1;
+	        } else {
+	            first = mid + 1;
+	        }
 		}
 		
-		return -1;
+		return null;
 	}
+	
 	
 	// Jump Search
 	public static int jumpSearch(int[] arr, int prev, int n, int num) {

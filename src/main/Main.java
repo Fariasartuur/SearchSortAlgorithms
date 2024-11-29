@@ -7,7 +7,7 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
-//		run()
+//		run();
 
 		int op = -1;
 		
@@ -79,44 +79,46 @@ public class Main {
 	
 //	Just remove the comment from the Algorithm you want to see
 	static void run() {
-//		new Library().runBooks();
-//		library.printBooks();
-//		new Classroom().runClassroom();
+		new AlgorithmsManager();
+		Library library = new Library();
+		library.printBooks();
+		Classroom classroom = new Classroom();
+		classroom.searchStudent(81.9f);
 		
-//		System.out.print("================================================");
-//		AlgorithmsManager.bSearchInt();
-//		System.out.print("================================================");
-//		AlgorithmsManager.bSearchString();
-//		System.out.print("================================================");
-//		AlgorithmsManager.iSearch();
-//		System.out.print("================================================");
-//		AlgorithmsManager.jSearch();
-//		System.out.print("================================================");
-//		AlgorithmsManager.eSearch();
-//		System.out.print("================================================");
-//		AlgorithmsManager.tSearch();
-//		System.out.print("================================================");
 		
-//		AlgorithmsManager.sSort();
-//		System.out.print("================================================");
-//		AlgorithmsManager.mSortInt();
-//		System.out.print("================================================");
-//		AlgorithmsManager.mSortString();
-//		System.out.print("================================================");
-//		AlgorithmsManager.selecSort();
-//		System.out.print("================================================");
-//		AlgorithmsManager.bSortFloat();
-//		System.out.print("================================================");
-//		AlgorithmsManager.bSortInt();
-//		System.out.print("================================================");
-//		AlgorithmsManager.rSort();
-//		System.out.print("================================================");
-//		AlgorithmsManager.qSortInt();
-//		System.out.print("================================================");
-//		AlgorithmsManager.qSortString();
-//		System.out.println("================================================");
-//		library.searchBook("978-1503280786");
-//		System.out.println("================================================");
+		System.out.print("================================================");
+		AlgorithmsManager.bSearchInt();
+		System.out.print("================================================");
+		AlgorithmsManager.bSearchList();
+		System.out.print("================================================");
+		AlgorithmsManager.iSearch();
+		System.out.print("================================================");
+		AlgorithmsManager.jSearch();
+		System.out.print("================================================");
+		AlgorithmsManager.eSearch();
+		System.out.print("================================================");
+		AlgorithmsManager.tSearch();
+		System.out.print("================================================");	
+		AlgorithmsManager.sSort();
+		System.out.print("================================================");
+		AlgorithmsManager.mSortInt();
+		System.out.print("================================================");
+		AlgorithmsManager.mSortString();
+		System.out.print("================================================");
+		AlgorithmsManager.selecSort();
+		System.out.print("================================================");
+		AlgorithmsManager.bSortFloat();
+		System.out.print("================================================");
+		AlgorithmsManager.bSortInt();
+		System.out.print("================================================");
+		AlgorithmsManager.rSort();
+		System.out.print("================================================");
+		AlgorithmsManager.qSortInt();
+		System.out.print("================================================");
+		AlgorithmsManager.qSortString();
+		System.out.println("================================================");
+		library.searchBook("978-1503280786");
+		System.out.println("================================================");
 	}
 
 }

@@ -1,13 +1,18 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Classroom {
 	
 	private static List<Student> students = new ArrayList<>();
 	
-	public void runClassroom() {
+	public Classroom() {
+		runClassroom();
+	}
+	
+	private void runClassroom() {
 		students.add(new Student("Alice", 92.5f));
         students.add(new Student("Bob", 85.3f));
         students.add(new Student("Charlie", 78.8f));
@@ -17,9 +22,13 @@ public class Classroom {
         students.add(new Student("George", 74.6f));
         students.add(new Student("Hannah", 81.9f));
         students.add(new Student("Ian", 60.5f));
-        students.add(new Student("Julia", 89.7f));
+        students.add(new Student("Julia", 89.7f));        
         
-        float minGrade = 0f;
+	}
+	
+	public void searchStudent(float targetGrade) {
+		
+		float minGrade = 0f;
         float maxGrade = 100f;
         
         for(Student s : students) {
@@ -35,16 +44,26 @@ public class Classroom {
         }
         
         System.out.println("-------------------------------");
+        List<Float> grades = new ArrayList<>();
+		for(Student student : students) {
+			grades.add(student.getGrade());
+		}
+		
+		Collections.sort(grades);
         
-        float targetGrade = 81.9f;
         
-        int resultIndex = interpolationSearch(students, 0, students.size() - 1, targetGrade);
+        float result = Algorithm.interpolationSearchList(grades, 0, grades.size() - 1, targetGrade);
 
-        if (resultIndex != -1) {
-            System.out.println("Student found: " + students.get(resultIndex));
-        } else {
-            System.out.println("Student with grade " + targetGrade + " not found.");
+        if (result != -1) {
+            for(Student student : students) {
+            	if(student.getGrade() == targetGrade) {
+            		System.out.println("Student Found: " + student);
+                    return;
+            	}
+            }
         }
+		
+		System.out.println("Estudante com nota " + targetGrade + " não encontrado.");
 	}
 	
 	private static void bucketSortFloat(int n, float min, float max) {
@@ -73,32 +92,6 @@ public class Classroom {
 			}
 		}
 	}
-	
-	private static int interpolationSearch(List<Student> arr, int first, int last, Float num){
-	    if(arr.isEmpty()) return -1;
-	    
-	    int count = 0;
-
-	    while(first <= last && num >= arr.get(first).getGrade() && num <= arr.get(last).getGrade()){
-	    	count++;
-	    	int pos = first + (int) (((num - arr.get(first).getGrade()) * (last - first)) / (arr.get(last).getGrade() - arr.get(first).getGrade()));
-
-	    	if(arr.get(pos).getGrade() == num){
-	    		System.out.println("Student found in "+ count +" attempts");
-	    		return pos;
-	    	}
-
-	    	if(arr.get(pos).getGrade() < num){
-	    		first = pos + 1;
-	    	}
-
-	    	if(arr.get(pos).getGrade() > num){
-	    		last = pos - 1;
-	    	}
-	    }
-
-	    return -1;
-	  }
 
 	public class Student{
 		
