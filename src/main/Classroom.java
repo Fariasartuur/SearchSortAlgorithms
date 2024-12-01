@@ -6,58 +6,58 @@ import java.util.List;
 
 public class Classroom {
 	
-	private static List<Student> students = new ArrayList<>();
+	private static List<Estudante> estudantes = new ArrayList<>();
 	
 	public Classroom() {
 		runClassroom();
 	}
 	
 	private void runClassroom() {
-		students.add(new Student("Alice", 92.5f));
-        students.add(new Student("Bob", 85.3f));
-        students.add(new Student("Charlie", 78.8f));
-        students.add(new Student("Diana", 88.2f));
-        students.add(new Student("Evan", 95.0f));
-        students.add(new Student("Fiona", 67.4f));
-        students.add(new Student("George", 74.6f));
-        students.add(new Student("Hannah", 81.9f));
-        students.add(new Student("Ian", 60.5f));
-        students.add(new Student("Julia", 89.7f));        
+		estudantes.add(new Estudante("Alice", 92.5f));
+        estudantes.add(new Estudante("Bob", 85.3f));
+        estudantes.add(new Estudante("Charlie", 78.8f));
+        estudantes.add(new Estudante("Diana", 88.2f));
+        estudantes.add(new Estudante("Evan", 95.0f));
+        estudantes.add(new Estudante("Fiona", 67.4f));
+        estudantes.add(new Estudante("George", 74.6f));
+        estudantes.add(new Estudante("Hannah", 81.9f));
+        estudantes.add(new Estudante("Ian", 60.5f));
+        estudantes.add(new Estudante("Julia", 89.7f));        
         
 	}
 	
-	public void searchStudent(float targetGrade, Algorithm al) {
+	public void searchStudent(float targetGrade, Algoritmo al) {
 		
 		float minGrade = 0f;
         float maxGrade = 100f;
         
-        for(Student s : students) {
+        for(Estudante s : estudantes) {
         	System.out.println(s);
         }
         
         System.out.println("-------------------------------");
         
-        bucketSortFloat(students.size(), minGrade, maxGrade);    
+        bucketSortFloat(estudantes.size(), minGrade, maxGrade);    
         
-        for(Student s : students) {
+        for(Estudante s : estudantes) {
         	System.out.println(s);
         }
         
         System.out.println("-------------------------------");
         List<Float> grades = new ArrayList<>();
-		for(Student student : students) {
-			grades.add(student.getGrade());
+		for(Estudante student : estudantes) {
+			grades.add(student.getNota());
 		}
 		
 		Collections.sort(grades);
         
         
-        float result = al.interpolationSearchList(grades, 0, grades.size() - 1, targetGrade);
+        float result = al.interpolationSearchList(grades, targetGrade);
 
         if (result != -1) {
-            for(Student student : students) {
-            	if(student.getGrade() == targetGrade) {
-            		System.out.println("Student Found: " + student);
+            for(Estudante student : estudantes) {
+            	if(student.getNota() == targetGrade) {
+            		System.out.println("Estudante encontrado: " + student);
                     return;
             	}
             }
@@ -70,58 +70,50 @@ public class Classroom {
 		if(n == 0) return;
 		
 		@SuppressWarnings("unchecked")
-		ArrayList<Student>[] buckets = new ArrayList[n];
+		ArrayList<Estudante>[] buckets = new ArrayList[n];
 		for(int i = 0; i < n; i++) {
 			buckets[i] = new ArrayList<>();
 		}
 		
-		for(Student s : students) {
-			int bucket_idx = (int) ((s.getGrade() - min) / (max - min) * n);
+		for(Estudante s : estudantes) {
+			int bucket_idx = (int) ((s.getNota() - min) / (max - min) * n);
 			if (bucket_idx >= n) bucket_idx = n - 1;
 			buckets[bucket_idx].add(s);
 		}
 		
-		for(ArrayList<Student> bucket : buckets) {
-			bucket.sort((s1, s2) -> Float.compare(s1.getGrade(), s2.getGrade()));
+		for(ArrayList<Estudante> bucket : buckets) {
+			bucket.sort((s1, s2) -> Float.compare(s1.getNota(), s2.getNota()));
 		}
 		
 		int index = 0;
-		for(ArrayList<Student> bucket : buckets) {
-			for(Student s : bucket) {
-				students.set(index++, s);
+		for(ArrayList<Estudante> bucket : buckets) {
+			for(Estudante s : bucket) {
+				estudantes.set(index++, s);
 			}
 		}
 	}
 
-	public class Student{
+	public class Estudante{
 		
-		private String name;
-		private float grade;
+		private String nome;
+		private float nota;
 		
-		public Student(String name, float grade) {
-			this.name = name;
-			this.grade = grade;
+		public Estudante(String nome, float nota) {
+			this.nome = nome;
+			this.nota = nota;
 		}
 
-		public String getName() {
-			return name;
+		public String getNome() {
+			return nome;
 		}
 
-		public void setName(String name) {
-			this.name = name;
-		}
-
-		public float getGrade() {
-			return grade;
-		}
-
-		public void setGrade(float grade) {
-			this.grade = grade;
+		public float getNota() {
+			return nota;
 		}
 
 		@Override
 		public String toString() {
-			return "Student [name=" + name + ", grade=" + grade + "]";
+			return "Estudante [nome=" + nome + ", nota=" + nota + "]";
 		}
 		
 		

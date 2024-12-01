@@ -4,14 +4,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Algorithm {
+public class Algoritmo {
 	
 	private static int comparisonCount = 0;
 
 	// Interpolation Search
-	int interpolationSearch(List<Integer> arr, int first, int last, int num){
-	    if(arr.size() == 0) return -1;
+	int interpolationSearch(List<Integer> arr, int num){
+	    if(arr.size() == 0 || arr == null) return -1;
 	    
+	    int first = 0;
+	    int last = arr.size() - 1;
 	    int count = 0;
 
 	    while(first <= last && num >= arr.get(first) && num <= arr.get(last)){
@@ -20,7 +22,7 @@ public class Algorithm {
 
 
 	    	if(arr.get(pos) == num){
-	    		System.out.println("Number found in "+ count +" attempts");
+	    		System.out.println("Interpolation: Numero encontrado em "+ count +" tentativas");
 	    		return pos;
 	    	}
 
@@ -36,9 +38,11 @@ public class Algorithm {
 	    return -1;
 	  }
 	
-	float interpolationSearchList(List<Float> arr, int first, int last, float num) {
+	float interpolationSearchList(List<Float> arr, float num) {
 		if(arr.isEmpty() || arr == null) return -1;
 		
+		int first = 0;
+	    int last = arr.size() - 1;
 		int count = 0;
 		
 	    while(first <= last && num >= arr.get(first) && num <= arr.get(last)) {
@@ -46,7 +50,7 @@ public class Algorithm {
 	    	int pos = first + (int) (((num - arr.get(first)) * (last - first)) / (arr.get(last) - arr.get(first)));
 
 	    	if(arr.get(pos).equals(num)) {
-	    		System.out.println("Student found in "+ count +" attempts");
+	    		System.out.println("Interpolation: Numero encontrado em "+ count +" tentativas");
 	    		return pos;
 	    	}
 	    	
@@ -64,7 +68,7 @@ public class Algorithm {
 	
 	// Binary Search
 	int binarySearchInt(List<Integer> arr, int first, int last, int num) {
-		if(arr.size() == 0) return -1;
+		if(arr.size() == 0 || arr == null) return -1;
 		
 		int count = 0;
 		
@@ -73,7 +77,7 @@ public class Algorithm {
 			int mid = first + (last - first) / 2;
 			
 			if(arr.get(mid) == num) {
-				System.out.println("Number found in "+ count +" attempts");
+				System.out.println("Binary: Numero encontrado em "+ count +" tentativas");
 				return mid;
 			}
 			
@@ -89,30 +93,36 @@ public class Algorithm {
 		return -1;
 	}
 	
-	String binarySearchList(List<String> arr, int first, int last, String word) {
-		if(arr.isEmpty() || arr == null) return null;
-		
-		while(first <= last) {
-			int mid = first + (last - first) / 2;
-			String midList = arr.get(mid);
-			
-			int comparison = word.compareTo(midList);
-			if (comparison == 0) {
-	            return midList;
+	int binarySearchList(List<String> arr, String word) {
+	    if (arr == null || arr.isEmpty()) return -1;
+
+	    int first = 0;
+	    int last = arr.size() - 1;
+
+	    while (first <= last) {
+	        int mid = first + (last - first) / 2;
+	        String midList = arr.get(mid);
+
+	        int comparison = word.compareTo(midList);
+	        if (comparison == 0) {
+	            return mid;
 	        } else if (comparison < 0) {
 	            last = mid - 1;
 	        } else {
 	            first = mid + 1;
 	        }
-		}
-		
-		return null;
+	    }
+
+	    return -1;
 	}
 	
 	
 	// Jump Search
-	int jumpSearch(List<Integer> arr, int prev, int n, int num) {
- 
+	int jumpSearch(List<Integer> arr, int num) {
+		if(arr.isEmpty() || arr == null) return -1;
+		
+		int prev = 0;
+	    int n = arr.size();
         int step = (int)Math.sqrt(n);
         int count = 0;
         
@@ -129,7 +139,7 @@ public class Algorithm {
         for (int i = prev; i < Math.min(step, n); i++) {
         	count++;
         	if (arr.get(i) == num) {
-				System.out.println("Number found in "+ count +" attempts");
+        		System.out.println("Jump: Numero encontrado em "+ count +" tentativas");
         		return i;
         	}
         }
@@ -138,13 +148,15 @@ public class Algorithm {
     }
 	
 	// Exponential Search
-	int exponentialSearch(List<Integer> arr, int n, int num) {
-		int count = 1;
+	int exponentialSearch(List<Integer> arr, int num) {
+		if(arr.isEmpty()  || arr == null) return -1;
 		
-		if(n == 0) return -1;
-			
+		int count = 1;
+		int n = arr.size();
+		
+		
 		if (arr.get(0) == num) {
-			System.out.println("Number found in "+ count +" attempts");
+			System.out.println("Exponential: Numero encontrado em "+ count +" tentativas");
 			return 0;
 		}
 
@@ -155,21 +167,21 @@ public class Algorithm {
 			i = i * 2;
 		}
 			
-		int result = binarySearchInt(arr, i / 2, Math.min(i, n), num); // Arrays.binarySearch(arr, i / 2, Math.min(i, n), num);
+		int result = binarySearchInt(arr, i / 2, Math.min(i, n), num);
 
 	    if (result >= 0) {
-	        System.out.println("Number found in " + count + " attempts");
-	        return result;
+	    	System.out.println("Exponential: Numero encontrado em "+ count +" tentativas");
+	    	return result;
 	    } 
 	    
 	    return -1;
 	}
 	
 	// Ternary Search
-	int ternarySearch(List<Integer> arr,int left, int right, int num) {
-		int count = 0;
+	int ternarySearch(List<Integer> arr, int left, int right, int num) {
+		if(arr.isEmpty() || arr == null) return -1;
 		
-		if(arr.size() == 0) return -1;
+		int count = 0;
 		
 		if(right >= left) {
 			count++;
@@ -178,11 +190,11 @@ public class Algorithm {
 			int mid2 = right - (right - left) / 3;
 			
 			if(arr.get(mid1) == num) { 
-				System.out.println("Number found in " + count + " attempts");
+				System.out.println("Ternary: Numero encontrado em "+ count +" tentativas");
 				return mid1;
 			}
 			if(arr.get(mid2) == num) {
-				System.out.println("Number found in " + count + " attempts");
+				System.out.println("Ternary: Numero encontrado em "+ count +" tentativas");
 				return mid2;
 			}
 			
@@ -384,11 +396,11 @@ public class Algorithm {
 	}
 	
 	// Bucket Sort Float
-	float[] bucketSortFloat(float[] arr, int n, float min, float max) {
+	List<Float> bucketSortFloat(List<Float> arr, int n, float min, float max) {
 		if(n == 0) return null;
 		
 		@SuppressWarnings("unchecked")
-		ArrayList<Float>[] buckets = new ArrayList[n];
+		List<Float>[] buckets = new List[n];
 		
 		for(int i = 0; i < n; i++) {
 			buckets[i] = new ArrayList<>();
@@ -404,12 +416,10 @@ public class Algorithm {
 			Collections.sort(buckets[i]);
 		}
 		
-		int index = 0;
-		for(int i = 0; i < n; i++) {
-			for(float num : buckets[i]) {
-				arr[index++] = num;
-			}
-		}
+		arr.clear();
+	    for (int i = 0; i < n; i++) {
+	        arr.addAll(buckets[i]);
+	    }
 		
 		return arr;
 	}
@@ -622,9 +632,5 @@ public class Algorithm {
 	public static int getComparisonCount() {
 	    return comparisonCount;
 	}
-
-	
-	
-	
 
 }
