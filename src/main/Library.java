@@ -28,13 +28,15 @@ public class Library {
         Collections.sort(books, Comparator.comparing(Book::getIsbn));
 	}
 	
-	public void printBooks() {
+	private void printBooks() {
 		for(Book b : books) {
 			System.out.println("ISBN: " + b.getIsbn() + " - Title: " + b.getTitle() + " - Author: " + b.getAuthor());
 		}
 	}
 	
-	public void searchBook(String isbn) {
+	public void searchBook(String isbn, Algorithm al) {
+		
+		printBooks();
 		
 		List<String> isbns = new ArrayList<>();
 		for(Book book : books) {
@@ -43,7 +45,7 @@ public class Library {
 		
 		Collections.sort(isbns);
 		
-		String findIsbn = Algorithm.binarySearchList(isbns, 0, isbns.size() - 1, isbn);
+		String findIsbn = al.binarySearchList(isbns, 0, isbns.size() - 1, isbn);
 		
 		if (findIsbn != null) {
             for(Book book : books) {

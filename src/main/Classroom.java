@@ -26,7 +26,7 @@ public class Classroom {
         
 	}
 	
-	public void searchStudent(float targetGrade) {
+	public void searchStudent(float targetGrade, Algorithm al) {
 		
 		float minGrade = 0f;
         float maxGrade = 100f;
@@ -52,7 +52,7 @@ public class Classroom {
 		Collections.sort(grades);
         
         
-        float result = Algorithm.interpolationSearchList(grades, 0, grades.size() - 1, targetGrade);
+        float result = al.interpolationSearchList(grades, 0, grades.size() - 1, targetGrade);
 
         if (result != -1) {
             for(Student student : students) {
