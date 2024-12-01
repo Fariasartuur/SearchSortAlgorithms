@@ -1,15 +1,15 @@
-# Search & Sort Algorithms
+# Algoritmos de Busca & Ordenação
 
-This repository contains a series of implementations of search and sorting algorithms that are part of a study for the Data Structures course. Below are the descriptions of the implemented algorithms, performance comparisons, and usage examples.
+Este repositório contém uma série de implementações de algoritmos de busca e ordenação que fazem parte de um estudo para o curso de Estruturas de Dados de minha faculdade. Abaixo estão as descrições de alguns algoritmos implementados, comparações de desempenho e exemplos de uso.
 
-# Search Algorithms
+# Algoritmos de Busca
 - Binary Search
 - Interpolation Search
 - Jump Search
 - Exponential Search
 - Ternary Search
 
-# Sort Algorithms
+# Algoritmos de Ordenação
 
 - Shell Sort
   - Shell
@@ -26,24 +26,24 @@ This repository contains a series of implementations of search and sorting algor
   - Middle Pivot
   - Last Pivot
 
-# Search Algorithm
+# Algoritmo de Busca
 
-#### Time Comparison & Complexity
+#### Comparação de Tempo & Complexidade
 
 <table>
  <tr>
-  <td colspan="4" style="text-align: center;">Time Comparison</td>
-  <td colspan="3" style="text-align: center;">Time Complexity</td>
+  <td colspan="4" style="text-align: center;">Comparação de Tempo</td>
+  <td colspan="3" style="text-align: center;">Complexidade de Tempo</td>
  </tr>
  <tr>
    <td>Algorithm</td>
-   <td>Execution Time - Small List</td>
-   <td>Execution Time - Medium List</td>
-   <td>Execution Time - Big List</td>
-   <td>Best Case</td>
-   <td>Medium Case</td>
-   <td>Worst Case</td>
-   <td>Space Complexity</td>
+   <td>Tempo de Execução - Lista Pequena</td>
+   <td>Tempo de Execução - Lista Média</td>
+   <td>Tempo de Execução - Lista Grande</td>
+   <td>Melhor Caso</td>
+   <td>Médio Caso</td>
+   <td>Pior Caso</td>
+   <td>Complexidade de Espaço</td>
  </tr>
  <tr>
    <td>Binary Search</td>
@@ -97,23 +97,23 @@ This repository contains a series of implementations of search and sorting algor
  </tr>
 </table>
 
-# Sort Algorithm
+# Algoritmo de Ordenação
 
-#### Time & Comparison Complexity
+#### Comparação de Tempo & Complexidade
 
 <table>
  <tr>
-  <td colspan="4" style="text-align: center;">Time Comparison</td>
-  <td colspan="3" style="text-align: center;">Time Complexity</td>
+  <td colspan="4" style="text-align: center;">Comparação de Tempo</td>
+  <td colspan="3" style="text-align: center;">Complexidade de Tempo</td>
  </tr>
  <tr>
-   <td>Algorithm</td>
-   <td>Execution Time</td>
-   <td colspan="2">Comparison Number</td>
-   <td>Best Case</td>
-   <td>Medium Case</td>
-   <td>Worst Case</td>
-   <td>Space Complexity</td>
+   <td>Algoritmo</td>
+   <td>Tempo de Execução</td>
+   <td colspan="2">Numero de Comparação</td>
+   <td>Melhor Caso</td>
+   <td>Médio Caso</td>
+   <td>Pior Caso</td>
+   <td>Complexidade de Tempo</td>
  </tr>
  <tr>
    <td>Shell Sort (Knuth)</td>
@@ -216,49 +216,54 @@ This repository contains a series of implementations of search and sorting algor
  </tr>
 </table>
 
-# Sort Algorithms Stability
+# Estabilidade dos Algoritmos de Ordenação
 
 ### 1. Shell Sort
-- Stability: Not Stable
-- Why? During the process of comparing elements over larger gaps, equal elements may be shifted, altering their relative order.
-- Example:
+- **Estabilidade:** Não estável
+- **Por quê?** Durante o processo de comparação de elementos em grandes intervalos, elementos iguais podem ser deslocados, alterando sua ordem relativa.
+- **Exemplo:**
   - Original: [(3, A), (3, B), (2, C)]
   - Shell Sort: [(2, C), (3, B), (3, A)]
    
 ### 2. Merge Sort
-- Stability: Stable
-- Why? While merging sorted subarrays, equal elements are copied in the order they appear in the subarray.
-- Example:
+- **Estabilidade:** Estável
+- **Por quê?** Durante a intercalação de sub-arrays ordenados, os elementos iguais são copiados na ordem em que aparecem nos sub-arrays.
+- **Exemplo:**
   - Original: [(3, A), (2, B), (3, C)]
   - Merge Sort: [(2, B), (3, A), (3, C)]
+
 ### 3. Selection Sort
-- Stability: Unstable
-- Why? During the process of swapping the smallest element with the current element, the relative order of equal elements may change.
-- Example:
+- **Estabilidade:** Não estável
+- **Por quê?** Durante o processo de troca do menor elemento com o elemento atual, a ordem relativa de elementos iguais pode mudar.
+- **Exemplo:**
   - Original: [(3, A), (3, B), (2, C)]
   - Selection Sort: [(2, C), (3, B), (3, A)]
+
 ### 4. Bucket Sort
-- Stability: Stable (if the sorting within each bucket is stable)
-- Why? Equal elements fall into the same bucket, and their relative order is preserved if the sorting method used inside the buckets is stable (e.g., Merge Sort).
-- Example:
+- **Estabilidade:** Estável (se o método usado dentro de cada balde for estável)
+- **Por quê?** Elementos iguais caem no mesmo balde, e sua ordem relativa é preservada se o método de ordenação usado nos baldes for estável (por exemplo, Merge Sort).
+- **Exemplo:**
   - Original: [(3, A), (3, B), (2, C)]
   - Bucket Sort: [(2, C), (3, A), (3, B)]
+
 ### 5. Radix Sort
-- Stability: Stable
-- Why? It sorts digits from the least significant to the most significant, using a stable sorting algorithm (often Counting Sort) at each step.
-- Example:
+- **Estabilidade:** Estável
+- **Por quê?** Ele ordena os dígitos do menos significativo para o mais significativo, usando um algoritmo de ordenação estável (geralmente Counting Sort) em cada etapa.
+- **Exemplo:**
   - Original: [(32, A), (32, B), (21, C)]
   - Radix Sort: [(21, C), (32, A), (32, B)]
+
 ### 6. Quick Sort
-- Stability: Unstable
-- Why? During partitioning, equal elements may be placed on different sides of the pivot, altering their relative order.
-- Example:
+- **Estabilidade:** Não estável
+- **Por quê?** Durante o particionamento, elementos iguais podem ser colocados em lados diferentes do pivô, alterando sua ordem relativa.
+- **Exemplo:**
   - Original: [(3, A), (3, B), (2, C)]
   - Quick Sort: [(2, C), (3, B), (3, A)]
 
-# Graphics
 
-Here is a column chart representing the sorting algorithms:
+# Gráficos
+
+Aqui está um gráfico de colunas representando os algoritmos de ordenação:
 
 ### Merge Sort
 <img src="assets/MergeSort.png" alt="Column Graphic" width="500" />
