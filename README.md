@@ -120,7 +120,7 @@ This repository contains a series of implementations of search and sorting algor
    <td>0.000007</td>
    <td colspan="2">-</td>
    <td>O(n log n)</td>
-   <td>-</td>
+   <td>40</td>
    <td>O(n^(3/2)</td>
    <td>O(1)</td>
  </tr>
@@ -208,7 +208,7 @@ This repository contains a series of implementations of search and sorting algor
  <tr>
    <td>Shell Sort (Hibbard)</td>
    <td>0.002483</td>
-   <td colspan="2">-</td>
+   <td colspan="2">48</td>
    <td>O(n log n)</td>
    <td>O(n^(3/2))</td>
    <td>O(n²)</td>
