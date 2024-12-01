@@ -26,8 +26,8 @@ public class Main {
 		do {
 			
 			System.out.println("Chose your option");
-			System.out.println("1- Search Algorithms");
-			System.out.println("2- Sort Algorithms");
+			System.out.println("1 - Search Algorithms");
+			System.out.println("2 - Sort Algorithms");
 			System.out.println("0 - EXIT");
 			
 			op = sc.nextInt();
@@ -59,87 +59,63 @@ public class Main {
         System.out.println();
     }
 	
+	int[] askNumber() {
+		int[] array = new int[3];
+		
+		printList(listS);
+		System.out.print("Insert a number to search: ");
+		array[0] = sc.nextInt();
+		printList(listM);
+		System.out.print("Insert a number to search: ");
+		array[1] = sc.nextInt();
+		printList(listB);
+		System.out.print("Insert a number to search: ");
+		array[2] = sc.nextInt();
+		
+		return array;
+	}
+	
 	void searchMenu() {	
 		int op = -1;
-		int numS, numM, numB;
+		int[] array = new int[3];
 		
 		do {
 			
 			System.out.println("Chose your option");
-			System.out.println("1- Binary Search");
-			System.out.println("2- Interpolation Search");
-			System.out.println("3- Jump Search");
-			System.out.println("4- Exponential Search");
-			System.out.println("5- Ternary Search");
+			System.out.println("1 - Binary Search");
+			System.out.println("2 - Interpolation Search");
+			System.out.println("3 - Jump Search");
+			System.out.println("4 - Exponential Search");
+			System.out.println("5 - Ternary Search");
 			System.out.println("0 - RETURN");
 			
 			op = sc.nextInt();
 			
 			switch(op) {
 			case 1:
-				printList(listS);
-				System.out.print("Insert a number to search: ");
-				numS = sc.nextInt();
-				printList(listM);
-				System.out.print("Insert a number to search: ");
-				numM = sc.nextInt();
-				printList(listB);
-				System.out.print("Insert a number to search: ");
-				numB = sc.nextInt();
+				array = askNumber();
 				
-				am.bSearchInt(listS, listM, listB, numS, numM, numB, "binary", al);
+				am.bSearchInt(listS, listM, listB, array[0], array[1], array[2], "binary", al);
 				break;
 			case 2:
-				printList(listS);
-				System.out.print("Insert a number to search: ");
-				numS = sc.nextInt();
-				printList(listM);
-				System.out.print("Insert a number to search: ");
-				numM = sc.nextInt();
-				printList(listB);
-				System.out.print("Insert a number to search: ");
-				numB = sc.nextInt();
+				array = askNumber();
 				
-				am.iSearch(listS, listM, listB, numS, numM, numB, "interpolation", al);	
+				am.iSearch(listS, listM, listB, array[0], array[1], array[2], "interpolation", al);	
 				break;
 			case 3:
-				printList(listS);
-				System.out.print("Insert a number to search: ");
-				numS = sc.nextInt();
-				printList(listM);
-				System.out.print("Insert a number to search: ");
-				numM = sc.nextInt();
-				printList(listB);
-				System.out.print("Insert a number to search: ");
-				numB = sc.nextInt();
+				array = askNumber();
 				
-				am.jSearch(listS, listM, listB, numS, numM, numB, "jump", al);
+				am.jSearch(listS, listM, listB, array[0], array[1], array[2], "jump", al);
 				break;
 			case 4:
-				printList(listS);
-				System.out.print("Insert a number to search: ");
-				numS = sc.nextInt();
-				printList(listM);
-				System.out.print("Insert a number to search: ");
-				numM = sc.nextInt();
-				printList(listB);
-				System.out.print("Insert a number to search: ");
-				numB = sc.nextInt();
+				array = askNumber();
 				
-				am.eSearch(listS, listM, listB, numS, numM, numB, "exponential", al);
+				am.eSearch(listS, listM, listB, array[0], array[1], array[2], "exponential", al);
 				break;
 			case 5:
-				printList(listS);
-				System.out.print("Insert a number to search: ");
-				numS = sc.nextInt();
-				printList(listM);
-				System.out.print("Insert a number to search: ");
-				numM = sc.nextInt();
-				printList(listB);
-				System.out.print("Insert a number to search: ");
-				numB = sc.nextInt();
+				array = askNumber();
 				
-				am.tSearch(listS, listM, listB, numS, numM, numB, "ternary", al);
+				am.tSearch(listS, listM, listB, array[0], array[1], array[2], "ternary", al);
 				break;
 			case 0:
 				break;
@@ -156,12 +132,12 @@ public class Main {
 		
 		do {
 			System.out.println("Chose your option");
-			System.out.println("1- Shell Sort");
-			System.out.println("2- Merge Sort");
-			System.out.println("3- Selection Sort");
-			System.out.println("4- Bucket Sort");
-			System.out.println("5- Radix Sort");
-			System.out.println("6- Quick Sort");
+			System.out.println("1 - Shell Sort");
+			System.out.println("2 - Merge Sort");
+			System.out.println("3 - Selection Sort");
+			System.out.println("4 - Bucket Sort");
+			System.out.println("5 - Radix Sort");
+			System.out.println("6 - Quick Sort");
 			System.out.println("0 - RETURN");
 			
 			op = sc.nextInt();
@@ -187,7 +163,6 @@ public class Main {
 		
 	}
 	
-//	Just remove the comment from the Algorithm you want to see
 	void run() {
 		
 		new AlgorithmsManager();
