@@ -118,9 +118,9 @@ This repository contains a series of implementations of search and sorting algor
  <tr>
    <td>Shell Sort (Knuth)</td>
    <td>0.000007</td>
-   <td colspan="2">-</td>
+   <td colspan="2">40</td>
    <td>O(n log n)</td>
-   <td>40</td>
+   <td>-</td>
    <td>O(n^(3/2)</td>
    <td>O(1)</td>
  </tr>
