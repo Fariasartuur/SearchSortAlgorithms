@@ -30,8 +30,9 @@ public class Main {
     public static void main(String[] args) {
     	Main main = new Main();
 
-        // Descomente para rodar todos os algoritmos
-         main.run();
+        // Tire o comentario para rodar todos os algoritmos
+    	
+        // main.run();
 
         int opcao = -1;
 
@@ -89,7 +90,7 @@ public class Main {
                     scanner.nextLine();
 
                     if (opcaoB == 1) {
-                        array = pedirNumeros();
+                    	array = pedirNumeros();
 
                         am.bSearchInt(listS, listM, listB, array[0], array[1], array[2], Constantes.BINARY_SEARCH);
                     } else if (opcaoB == 2) {
@@ -104,6 +105,7 @@ public class Main {
                     }
                     break;
                 case 2:
+                	
                     array = pedirNumeros();
 
                     am.iSearch(listS, listM, listB, array[0], array[1], array[2], Constantes.INTERPOLATION_SEARCH);
@@ -293,6 +295,9 @@ public class Main {
 	}
 
     int[] pedirNumeros() {
+    	System.out.println(listS);
+    	System.out.println(listM);
+    	System.out.println(listB);
         int[] array = new int[3];
 
         System.out.println("Digite três números para as buscas");
